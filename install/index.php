@@ -138,8 +138,6 @@ Class ibs_shopnotebook extends CModule
     public function DoUninstall()
     {
         global $APPLICATION, $step, $errors;
-//        $this->UnInstallFiles();
-//        $this->UnInstallDB();
         $request = Context::getCurrent()->getRequest();
         $FORM_RIGHT = $APPLICATION->GetGroupRight("form");
         if ($FORM_RIGHT>="W")

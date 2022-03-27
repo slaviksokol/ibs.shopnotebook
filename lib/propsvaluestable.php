@@ -78,7 +78,7 @@ class PropsValuesTable extends DataManager
                 NotebooksTable::class,
                 Join::on('this.ID_NOTEBOOK', 'ref.ID')
             ))
-                ->configureJoinType('inner'),
+                ->configureJoinType('left'),
             new StringField(
                 'VALUE',
                 [

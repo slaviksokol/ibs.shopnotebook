@@ -22,6 +22,7 @@ $data = array(
         ['NAME'=>'Samsung D 200','CODE'=>'samsung_d_200','MODEL'=>'d_200','YEAR'=>2021,'PRICE'=>35000],
         ['NAME'=>'MSI GX 75','CODE'=>'msi_gx_75','MODEL'=>'gx_75','YEAR'=>2021,'PRICE'=>55000],
         ['NAME'=>'Macbook Pro','CODE'=>'macbook_pro','MODEL'=>'pro','YEAR'=>2022,'PRICE'=>90000],
+        ['NAME'=>'Macbook Air','CODE'=>'macbook_air','MODEL'=>'air','YEAR'=>2022,'PRICE'=>8000],
     ],
     '\Ibs\ShopNotebook\PropsTable'=>[
         ['NAME'=>'Процессор','CODE'=>'processor'],
@@ -29,8 +30,13 @@ $data = array(
         ['NAME'=>'Жесткий диск','CODE'=>'hard'],
     ],
     '\Ibs\ShopNotebook\PropsValuesTable'=>[
+//        ['VALUE'=>'Core i5','CODE'=>'core_i5','PROP'=>'processor','NOTEBOOK'=>'samsung_d_300'],
         ['VALUE'=>'Core i5','CODE'=>'core_i5','PROP'=>'processor','NOTEBOOK'=>'samsung_d_200'],
+        ['VALUE'=>'8 Гб','CODE'=>'8_gb','PROP'=>'ram','NOTEBOOK'=>'samsung_d_200'],
+        ['VALUE'=>'80 Гб','CODE'=>'80_gb','PROP'=>'hard','NOTEBOOK'=>'samsung_d_200'],
+        ['VALUE'=>'500 Гб','CODE'=>'500_gb','PROP'=>'hard','NOTEBOOK'=>'samsung_d_200'],
         ['VALUE'=>'Core i5','CODE'=>'core_i5','PROP'=>'processor','NOTEBOOK'=>'msi_gx_75'],
+        ['VALUE'=>'Core i5','CODE'=>'core_i5','PROP'=>'processor','NOTEBOOK'=>'macbook_air'],
         ['VALUE'=>'Core i7','CODE'=>'core_i7','PROP'=>'processor','NOTEBOOK'=>'macbook_pro'],
     ]
 );
