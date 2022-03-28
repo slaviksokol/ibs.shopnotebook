@@ -10,6 +10,7 @@
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
+use \Bitrix\Main\Localization\Loc;
 use \Ibs\ShopNotebook;
 CModule::IncludeModule('ibs.shopnotebook');
 $arVariables = $arResult['VARIABLES'];
@@ -24,10 +25,10 @@ if($arResult['FOLDER'] && $arResult['URL_TEMPLATES']) {
     $arModels = $arBM['MODELS'];
 }
 
-$title = 'Магазин ноутбуков';
+$title = Loc::getMessage('IBS_SHOPNOTEBOOK_COMPONENT_NOTEBOOK_TITLE_DEFAULT');
 if($arVariables){
     if($arBrands[$arVariables['BRAND']]){
-        $title = 'Ноутбуки '.$arBrands[$arVariables['BRAND']]['NAME'];
+        $title = Loc::getMessage('IBS_SHOPNOTEBOOK_COMPONENT_NOTEBOOK_TITLE_BRANDS',['#BRAND#'=>$arBrands[$arVariables['BRAND']]['NAME']]);
     }
     if($arModels[$arVariables['MODEL']]){
         $title .= ' '.$arModels[$arVariables['MODEL']]['NAME'];
@@ -35,6 +36,7 @@ if($arVariables){
 
 }
 $APPLICATION->SetTitle($title);
+?><h1><?=$title?></h1><?
 
 if($arBrands){
     ?>
@@ -52,7 +54,7 @@ if($arBrands){
             <div id="collapse<?=$scode?>" class="accordion-collapse collapse<?=$showBrand ? ' show' : ''?>" aria-labelledby="heading<?=$scode?>" data-bs-parent="#accordionBrands">
                 <div class="accordion-body">
                     <div>
-                        <a class="btn btn-default border <?=$showBrand && !$arVariables['MODEL'] ? 'btn-primary' : ''?>" href="<?=$sect1['URL']?>">Все <?=$sect1['NAME']?></a>
+                        <a class="btn btn-default border <?=$showBrand && !$arVariables['MODEL'] ? 'btn-primary' : ''?>" href="<?=$sect1['URL']?>"><?=Loc::getMessage('IBS_SHOPNOTEBOOK_COMPONENT_NOTEBOOK_LINK_ALL_BRAND',['#BRAND#'=>$sect1['NAME']])?></a>
                         <br>
                         <br>
                     </div>

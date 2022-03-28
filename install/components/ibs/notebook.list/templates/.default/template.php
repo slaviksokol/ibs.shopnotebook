@@ -10,10 +10,11 @@
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-use \Bitrix\Main\Application;
+use \Bitrix\Main\Application,
+    \Bitrix\Main\Localization\Loc;
 $this->setFrameMode(true);
-$this->addExternalCss($templateFolder."/css/bootstrap.min.css");
-$this->addExternalJs($templateFolder."/js/bootstrap.min.js");
+$this->addExternalCss("/bitrix/css/ibs.shopnotebook/bootstrap.min.css");
+$this->addExternalJs("/bitrix/js/ibs.shopnotebook/bootstrap.min.js");
 $request = Application::getInstance()->getContext()->getRequest();
 
 ?>
@@ -29,9 +30,9 @@ $request = Application::getInstance()->getContext()->getRequest();
                             <a href="<?=$item['URL']?>"><?=$item['NAME']?></a>
                         </div>
                         <div class="col-6">
-                            <div>Цена: <b><?=number_format($item['PRICE'], 0, '', ' ');?></b></div>
+                            <div><?=Loc::getMessage('IVS_SHOPNOTEBOOK_COMPONENT_NOTEBOOK_DETAIL_PRICE',['#PRICE#'=>number_format($item['PRICE'], 0, '', ' ')])?></div>
                             <div>
-                                <a href="<?=$item['URL']?>">Подробнее</a>
+                                <a href="<?=$item['URL']?>"><?=Loc::getMessage('IVS_SHOPNOTEBOOK_COMPONENT_NOTEBOOK_DETAIL_LINK_MORE')?></a>
                             </div>
                         </div>
                     </div>
@@ -55,13 +56,13 @@ $request = Application::getInstance()->getContext()->getRequest();
                             <?if($curpage == 1 || !$curpage == 1){
                                 ?>
                                 <li class="page-item prev disabled">
-                                    <span class="page-link">Предыдущая</span>
+                                    <span class="page-link"><?=Loc::getMessage('IVS_SHOPNOTEBOOK_COMPONENT_NOTEBOOK_DETAIL_NAV_LINK_PREV')?></span>
                                 </li>
                                 <?
                             }else{
                                 ?>
                                 <li class="page-item prev">
-                                    <a class="page-link" href="<?=$APPLICATION->GetCurPageParam($arParams['PAGE_NUMBER_GET_NAME']."=".($curpage-1),array($arParams['PAGE_NUMBER_GET_NAME']))?>">Предыдущая</a>
+                                    <a class="page-link" href="<?=$APPLICATION->GetCurPageParam($arParams['PAGE_NUMBER_GET_NAME']."=".($curpage-1),array($arParams['PAGE_NUMBER_GET_NAME']))?>"><?=Loc::getMessage('IVS_SHOPNOTEBOOK_COMPONENT_NOTEBOOK_DETAIL_NAV_LINK_PREV')?></a>
                                 </li>
                                 <?
                             }?>
@@ -95,13 +96,13 @@ $request = Application::getInstance()->getContext()->getRequest();
                             <?if($curpage == $page_count){
                                 ?>
                                 <li class="page-item next disabled">
-                                    <span class="page-link">Следующая</span>
+                                    <span class="page-link"><?=Loc::getMessage('IVS_SHOPNOTEBOOK_COMPONENT_NOTEBOOK_DETAIL_NAV_LINK_NEXT')?></span>
                                 </li>
                                 <?
                             }else{
                                 ?>
                                 <li class="page-item next">
-                                    <a class="page-link" href="<?=$APPLICATION->GetCurPageParam($arParams['PAGE_NUMBER_GET_NAME']."=".($curpage+1),array($arParams['PAGE_NUMBER_GET_NAME']))?>">Следующая</a>
+                                    <a class="page-link" href="<?=$APPLICATION->GetCurPageParam($arParams['PAGE_NUMBER_GET_NAME']."=".($curpage+1),array($arParams['PAGE_NUMBER_GET_NAME']))?>"><?=Loc::getMessage('IVS_SHOPNOTEBOOK_COMPONENT_NOTEBOOK_DETAIL_NAV_LINK_NEXT')?></a>
                                 </li>
                                 <?
                             }?>

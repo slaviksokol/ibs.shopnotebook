@@ -67,14 +67,17 @@ Class ibs_shopnotebook extends CModule
 
     public function InstallFiles()
     {
-        CopyDirFiles("{$this->MODULE_PATH}/install/components",
-            $this->DOCUMENT_ROOT."/{$this->BASE_DIR}/components", true, true);
+        CopyDirFiles("{$this->MODULE_PATH}/install/components", $this->DOCUMENT_ROOT."/{$this->BASE_DIR}/components", true, true);
+        CopyDirFiles("{$this->MODULE_PATH}/install/css", $this->DOCUMENT_ROOT."/bitrix/css/{$this->MODULE_ID}", true, true);
+        CopyDirFiles("{$this->MODULE_PATH}/install/js", $this->DOCUMENT_ROOT."/bitrix/js/{$this->MODULE_ID}", true, true);
         return true;
     }
 
     public function UnInstallFiles()
     {
         DeleteDirFilesEx($this->DOCUMENT_ROOT."/{$this->BASE_DIR}/components/ibs");
+        DeleteDirFilesEx($this->DOCUMENT_ROOT."/bitrix/css/{$this->MODULE_ID}");
+        DeleteDirFilesEx($this->DOCUMENT_ROOT."/bitrix/js/{$this->MODULE_ID}");
         return true;
     }
 
@@ -158,7 +161,7 @@ Class ibs_shopnotebook extends CModule
                 $this->UnInstallFiles();
                 ModuleManager::unRegisterModule($this->MODULE_ID);
 
-                $APPLICATION->IncludeAdminFile(GetMessage("FORM_UNINSTALL_TITLE"), "{$this->MODULE_PATH}/install/unstep2.php");
+                $APPLICATION->IncludeAdminFile(Loc::getMessage("IBS_SHOP_NOTEBOOK_UNINSTALL_MODULE"), "{$this->MODULE_PATH}/install/unstep2.php");
             }
         }
 

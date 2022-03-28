@@ -2,8 +2,6 @@
 <?
 global $errors, $APPLICATION;
 $MODULE_ID = "ibs.shopnotebook";
-//IncludeModuleLangFile($_SERVER["DOCUMENT_ROOT"]."/local/modules/{$MODULE_ID}/install/index.php");
-//$err_mess = "FILE: ".__FILE__."<br>LINE: ";
 
 if($errors === false):
     echo CAdminMessage::ShowNote(GetMessage("MOD_UNINST_OK"));

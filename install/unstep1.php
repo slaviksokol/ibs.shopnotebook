@@ -2,7 +2,7 @@
 use \Bitrix\Main\Localization\Loc;
 global $APPLICATION;
 $MODULE_ID = "ibs.shopnotebook";
-//IncludeModuleLangFile($_SERVER["DOCUMENT_ROOT"]."/local/modules/{$MODULE_ID}/install/index.php"); ?>
+?>
 <form action="<?echo $APPLICATION->GetCurPage()?>">
     <?=bitrix_sessid_post()?>
     <input type="hidden" name="lang" value="<?=LANGUAGE_ID?>">

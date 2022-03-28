@@ -10,18 +10,19 @@
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-use \Bitrix\Main\Application;
-$this->addExternalCss($templateFolder."/css/bootstrap.min.css");
-$this->addExternalJs($templateFolder."/js/bootstrap.min.js");
+use \Bitrix\Main\Application,
+    \Bitrix\Main\Localization\Loc;
+$this->addExternalCss("/bitrix/css/ibs.shopnotebook/bootstrap.min.css");
+$this->addExternalJs("/bitrix/js/ibs.shopnotebook/bootstrap.min.js");
 $request = Application::getInstance()->getContext()->getRequest();
 $arVariables = $arResult['VARIABLES'];
 
 if($arResult['NAME']){
 ?>
-<h1><?='Ноутбук '.$arResult['NAME']?></h1>
+<h1><?=Loc::getMessage('IVS_SHOPNOTEBOOK_COMPONENT_NOTEBOOK_DETAIL_ITEM',['#NAME#'=>$arResult['NAME']])?></h1>
 <br>
 <br>
-<h2>Цена: <?=number_format($arResult['PRICE'], 0, '', ' ')?></h2>
+<h2><?=Loc::getMessage('IVS_SHOPNOTEBOOK_COMPONENT_NOTEBOOK_DETAIL_PRICE',['#PRICE#'=>number_format($arResult['PRICE'], 0, '', ' ')])?></h2>
 <br>
 <br>
 <div class="container">
@@ -30,7 +31,7 @@ if($arResult['NAME']){
             ?>
             <tbody>
             <tr>
-                <th>Бренд</th>
+                <th><?=Loc::getMessage('IVS_SHOPNOTEBOOK_COMPONENT_NOTEBOOK_DETAIL_BRAND')?></th>
                 <td><?=$arResult['BRAND']?></td>
             </tr>
             </tbody>
@@ -40,7 +41,7 @@ if($arResult['NAME']){
             ?>
             <tbody>
             <tr>
-                <th>Модель</th>
+                <th><?=Loc::getMessage('IVS_SHOPNOTEBOOK_COMPONENT_NOTEBOOK_DETAIL_MODEL')?></th>
                 <td><?=$arResult['MODEL']?></td>
             </tr>
             </tbody>
