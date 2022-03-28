@@ -3,7 +3,8 @@ use \Bitrix\Main\Localization\Loc,
     \Bitrix\Main\Application,
     \Bitrix\Main\Context,
     \Bitrix\Main\Loader,
-    \Bitrix\Main\ModuleManager;
+    \Bitrix\Main\ModuleManager,
+    \Bitrix\Main\IO\Directory;
 
 Loc::loadMessages(__FILE__);
 
@@ -75,9 +76,9 @@ Class ibs_shopnotebook extends CModule
 
     public function UnInstallFiles()
     {
-        DeleteDirFilesEx($this->DOCUMENT_ROOT."/{$this->BASE_DIR}/components/ibs");
-        DeleteDirFilesEx($this->DOCUMENT_ROOT."/bitrix/css/{$this->MODULE_ID}");
-        DeleteDirFilesEx($this->DOCUMENT_ROOT."/bitrix/js/{$this->MODULE_ID}");
+        Directory::deleteDirectory($this->DOCUMENT_ROOT."/{$this->BASE_DIR}/components/ibs");
+        Directory::deleteDirectory($this->DOCUMENT_ROOT."/bitrix/css/{$this->MODULE_ID}");
+        Directory::deleteDirectory($this->DOCUMENT_ROOT."/bitrix/js/{$this->MODULE_ID}");
         return true;
     }
 

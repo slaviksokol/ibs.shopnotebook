@@ -15,9 +15,35 @@ use \Bitrix\Main\Application,
 $this->setFrameMode(true);
 $this->addExternalCss("/bitrix/css/ibs.shopnotebook/bootstrap.min.css");
 $this->addExternalJs("/bitrix/js/ibs.shopnotebook/bootstrap.min.js");
+$this->addExternalJs("/bitrix/js/ibs.shopnotebook/bootstrap.bundle.min.js");
 $request = Application::getInstance()->getContext()->getRequest();
 
 ?>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSort" data-bs-toggle="dropdown" aria-expanded="false">
+                    <?=Loc::getMessage('IVS_SHOPNOTEBOOK_COMPONENT_NOTEBOOK_DETAIL_SORT')?>
+                </button>
+                <?
+                if($request['order']){
+                    $orderActive = $request['order'];
+                }elseif($arParams['SORT_ORDER'] && $arParams['SORT_BY']){
+                    $orderDefault = $orderActive = strtolower($arParams['SORT_ORDER']).'_'.strtolower($arParams['SORT_BY']);
+                }
+                ?>
+                <ul class="dropdown-menu" aria-labelledby="dropdownSort">
+                    <li><a class="dropdown-item <?=$orderActive == 'price_asc' ? 'active' : ''?>" href="<?=$APPLICATION->GetCurPageParam("order=price_asc", array("order"))?>"><?=Loc::getMessage('IVS_SHOPNOTEBOOK_COMPONENT_NOTEBOOK_DETAIL_SORT_PRICE_ASC')?></a></li>
+                    <li><a class="dropdown-item <?=$orderActive == 'price_desc' ? 'active' : ''?>" href="<?=$APPLICATION->GetCurPageParam("order=price_desc", array("order"))?>"><?=Loc::getMessage('IVS_SHOPNOTEBOOK_COMPONENT_NOTEBOOK_DETAIL_SORT_PRICE_DESC')?></a></li>
+                    <li><a class="dropdown-item <?=$orderActive == 'year_asc' ? 'active' : ''?>" href="<?=$APPLICATION->GetCurPageParam("order=year_asc", array("order"))?>"><?=Loc::getMessage('IVS_SHOPNOTEBOOK_COMPONENT_NOTEBOOK_DETAIL_SORT_YEAR_ASC')?></a></li>
+                    <li><a class="dropdown-item <?=$orderActive == 'year_desc' ? 'active' : ''?>" href="<?=$APPLICATION->GetCurPageParam("order=year_desc", array("order"))?>"><?=Loc::getMessage('IVS_SHOPNOTEBOOK_COMPONENT_NOTEBOOK_DETAIL_SORT_YEAR_DESC')?></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
 <div class="container notebook-list">
     <div class="row">
         <?
